@@ -1,14 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// could use one line instead: const router = require('express').Router();
 const tweetBank = require('../tweetBank');
-
-// router.get("/stylesheets/style.css",function(req,res,next){
-// 	res.sendFile("../views/",function(err){
-// 		if(err) next(err);
-// 		else console.log("Sent");
-// 	});
-// });
 
 module.exports = function (io) {
   // ...
@@ -23,7 +15,7 @@ module.exports = function (io) {
 	router.get('/users/:name', function(req, res) {
 	  var nameFind = req.params.name;
 	  var list = tweetBank.find( {'name': nameFind} );
-	  res.render ( 'index', { tweets: list, showForm: false});
+	  res.render ( 'index', { tweets: list, showForm: true, nameField: req.params.name});
 	});
 
 	router.get('/tweets/:id', function(req, res) {
@@ -42,5 +34,3 @@ module.exports = function (io) {
 	});
   return router;
 };
-
-// console.log("Print as str",io);
