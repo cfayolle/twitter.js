@@ -12,7 +12,10 @@
       100 followers
     </div>
     <div class="col-md-7">
+    	
+    	{% if showForm %}
       <h3>Timeline</h3>
+      {% endif %}
       <!-- display tweets here -->
       <div class="timeline">
       {% for tweet in tweets %}
