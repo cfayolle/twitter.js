@@ -1,24 +1,49 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  
+
   <div class="page-header">
     <h1>Welcome to Twitter.js!</h1>
   </div>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
       <b>Your Name</b><br>
       100 followers
     </div>
-    <div class="col-md-9">
-    
+    <div class="col-md-7">
+      <h3>Timeline</h3>
       <!-- display tweets here -->
+      <div class="timeline">
       {% for tweet in tweets %}
-        <li>{{tweet.content}}</li>
+        <h3><a href="/users/{{tweet.name}}">{{tweet.name}}</a></h3>
+        <li><a href="/tweets/{{tweet.uniqueId}}">{{tweet.content}}</a></li>
       {% endfor %}
-      
+
+      {% for tweet in solo %}
+        <h3><a href="/users/{{tweet.name}}">{{tweet.name}}</a></h3>
+        <h2>{{tweet.content}}</h2>
+      {% endfor %}
+      </div>
     </div>
+      <div class="col-md-3">
+        {% if showForm %}
+        <h2>Create New Tweet!</h2>
+        <form action="/tweets" method="POST">
+          <div class="form-group">
+        <label for="name_field">Name:</label>
+        <input name="name" type="text" id="name_field" style="width: 250px;" />
+      </div>
+
+        <div class="form-group">
+        <label for="text_field">Text:</label>
+        <input name="text" type="text" id="text_field" style="width: 250px;"/>
+        </div>
+
+        <input type="submit" value="Submit" />
+        </form>
+        {% endif %}
+      </div>
   </div>
-    
+
 {% endblock %}

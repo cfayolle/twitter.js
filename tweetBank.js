@@ -1,10 +1,11 @@
 const _ = require('lodash');
 
 const data = [];
+var count = 1;
 
 module.exports = {
 	add: function(name,content){
-		data.push({ name: name, content: content });
+		data.push({ name: name, content: content, uniqueId: count++ });
 	},
 	list: function(){
 		return _.cloneDeep(data);
