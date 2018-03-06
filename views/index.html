@@ -12,7 +12,7 @@
       100 followers
     </div>
     <div class="col-md-7">
-    	
+
     	{% if showForm %}
       <h3>Timeline</h3>
       {% endif %}
@@ -27,10 +27,11 @@
         <h3><a href="/users/{{tweet.name}}">{{tweet.name}}</a></h3>
         <h2>{{tweet.content}}</h2>
       {% endfor %}
+      <div class="dynamic"></div>
       </div>
     </div>
       <div class="col-md-3">
-        {% if showForm %}
+      	{% if showForm %}
         <h2>Create New Tweet!</h2>
         <form action="/tweets" method="POST">
           <div class="form-group">

@@ -92,9 +92,13 @@
     // When 'new_tweet' events are fired, do something with the packaged tweet
     socket.on('newTweet', function (tweet) { 
       console.log(tweet.name);
-      alert('Refreshing... check the console...');
+      //alert('Refreshing... check the console...');
       // some logic to add the new tweet to the DOM…
-      
+      var timeline = document.getElementsByClassName("dynamic");
+      //var node = document.createElement("div")
+      $(timeline).append(`<h3><a href='/users/'${tweet.name}'>${tweet.name}</a></h3><li><a href='/tweets/'${tweet.uniqueId}'>${tweet.content}</a></li>`);
+      //timeline.appendChild(node);
+      console.log(timeline);
     }); 
     </script>
 </html>
